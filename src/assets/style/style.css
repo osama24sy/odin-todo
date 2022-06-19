@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Roboto&display=swap');
+
+:root {
+    --celadon-blue: hsla(194, 100%, 33%, 1);
+    --maximum-blue-green: hsla(183, 100%, 36%, 1);
+    --light-yellow: hsla(58, 89%, 93%, 1);
+    --peach-puff: hsla(29, 97%, 86%, 1);
+    --bittersweet: hsla(4, 82%, 67%, 1);
+    --font-roboto: 'Roboto';
+    --font-comfortaa: 'Comfortaa';
+}
+
+html, body {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background-color: var(--light-yellow);
+}
+
+#content {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.header {
+    background-color: hsla(194, 100%, 33%, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 0px;
+    grid-column: 1 / 3;
+}
+
+.header > p {
+    color: var(--light-yellow);
+    font-family: var(--font-comfortaa);
+    margin: 0; 
+    font-size: 2em;
+    font-weight: bold;
+}
+
+/* Todo Section CSS */
+
+#todo-section {
+    grid-column: 2 / 3;
+}
+
+#todo-form {
+    display: none;
+}
