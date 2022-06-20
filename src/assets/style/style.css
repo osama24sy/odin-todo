@@ -8,7 +8,34 @@
     --bittersweet: hsla(4, 82%, 67%, 1);
     --font-roboto: 'Roboto';
     --font-comfortaa: 'Comfortaa';
+    --EAAE-1: #798C7A;
+    --EAAE-2: #A8BFAA;
+    --EAAE-3: #F2F2F2;
+    --EAAE-4: #404040;
+    --EAAE-5: #0D0D0D;
 }
+
+/* Color Palette from Adobe Colors */
+/* Color Theme Swatches in Hex */
+.EAAE-1-hex { color: #798C7A; }
+.EAAE-2-hex { color: #A8BFAA; }
+.EAAE-3-hex { color: #F2F2F2; }
+.EAAE-4-hex { color: #404040; }
+.EAAE-5-hex { color: #0D0D0D; }
+
+/* Color Theme Swatches in RGBA */
+.EAAE-1-rgba { color: rgba(120, 140, 121, 1); }
+.EAAE-2-rgba { color: rgba(168, 191, 169, 1); }
+.EAAE-3-rgba { color: rgba(242, 242, 242, 1); }
+.EAAE-4-rgba { color: rgba(63, 63, 63, 1); }
+.EAAE-5-rgba { color: rgba(12, 12, 12, 1); }
+
+/* Color Theme Swatches in HSLA */
+.EAAE-1-hsla { color: hsla(123, 7, 51, 1); }
+.EAAE-2-hsla { color: hsla(123, 15, 70, 1); }
+.EAAE-3-hsla { color: hsla(0, 0, 95, 1); }
+.EAAE-4-hsla { color: hsla(0, 0, 25, 1); }
+.EAAE-5-hsla { color: hsla(0, 0, 5, 1); }
 
 html, body {
     width: 100%;
@@ -25,7 +52,7 @@ html, body {
 }
 
 .header {
-    background-color: hsla(194, 100%, 33%, 0.8);
+    background-color: var(--EAAE-4);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,8 +72,38 @@ html, body {
 
 #todo-section {
     grid-column: 2 / 3;
+    padding: 18px;
 }
 
 #todo-form {
     display: none;
 }
+
+#todo-form > form {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+#todo-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 18px;
+    gap: 18px;
+}
+
+.task {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 2px solid rgba(128, 128, 128, 0.5);
+    border-radius: 15px;
+    background-color: var(--EAAE-1);
+}
+
+.task > p {
+    color: var(--EAAE-3);
+    font-family: var(--font-roboto);
+}
+

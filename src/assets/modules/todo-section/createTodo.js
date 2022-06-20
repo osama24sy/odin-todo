@@ -17,6 +17,7 @@ const createTodoDom = () => {
     const dueDate = document.createElement('input');
     dueDate.type = 'date';
     dueDate.id = 'dueDate';
+    dueDate.value = new Date().toJSON().slice(0,10);
 
 
     // Create a priority dropdown
@@ -52,18 +53,27 @@ const createTodoDom = () => {
             priority: priority.value 
         };
 
-        if (localStorage.defaultProject) {
-            let currProject = JSON.parse(localStorage.getItem('defaultProject'));
-            currProject.push(task);
-            localStorage.setItem('defaultProject', JSON.stringify(currProject));
-        } else {
-            localStorage.setItem('defaultProject', JSON.stringify([task]));
+        if (task.title !== "") {
+            if (localStorage.defaultProject) {
+                let currProject = JSON.parse(localStorage.getItem('defaultProject'));
+                currProject.push(task);
+                localStorage.setItem('defaultProject', JSON.stringify(currProject));
+            } else {
+                localStorage.setItem('defaultProject', JSON.stringify([task]));
+            }
         }
     });
     
     const cancel = document.createElement('button');
     cancel.id = 'cancel';
     cancel.innerText = 'Cancel';
+    cancel.type = 'button';
+
+    cancel.addEventListener('click', () => {
+        cont.style.display = 'none';
+        const addBtn = document.getElementById('add-btn');
+        addBtn.style.display = 'block';
+    });
 
     form.appendChild(title);
     form.appendChild(description);
