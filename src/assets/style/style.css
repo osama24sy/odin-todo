@@ -39,6 +39,7 @@
 
 html, body {
     width: 100%;
+    height: 100%;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -49,6 +50,7 @@ html, body {
     width: 80%;
     display: grid;
     grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 5fr;
 }
 
 .header {
@@ -73,6 +75,7 @@ html, body {
 #todo-section {
     grid-column: 2 / 3;
     padding: 18px;
+    background-color: var(--EAAE-2);
 }
 
 #todo-form {
@@ -107,3 +110,10 @@ html, body {
     font-family: var(--font-roboto);
 }
 
+
+/* Project Section CSS */
+
+#project-section {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+}

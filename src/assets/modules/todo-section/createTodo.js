@@ -1,3 +1,5 @@
+import renderTodos from "../todo-renderer";
+
 const createTodoDom = () => {
     const cont = document.createElement('div');
     cont.id = 'todo-form';
@@ -61,6 +63,8 @@ const createTodoDom = () => {
             } else {
                 localStorage.setItem('defaultProject', JSON.stringify([task]));
             }
+
+            renderTodos();
         }
     });
     

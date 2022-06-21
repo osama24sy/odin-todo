@@ -20,10 +20,22 @@ const renderTodos = () => {
         const priority = document.createElement('p');
         priority.textContent = item.priority;
 
+        const doneBtn = document.createElement('button');
+        doneBtn.type = 'button';
+        doneBtn.innerText = 'Done';
+        doneBtn.id = 'done-btn';
+        doneBtn.addEventListener('click', () => {
+            items.splice(i,1);
+            localStorage.setItem('defaultProject', JSON.stringify(items));
+            cont.innerHTML = '';
+            renderTodos();
+        });
+
         div.appendChild(title);
         div.appendChild(description);
         div.appendChild(dueDate);
         div.appendChild(priority);
+        div.appendChild(doneBtn);
 
         div.classList.add('task');
 
