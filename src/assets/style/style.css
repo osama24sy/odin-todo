@@ -116,4 +116,27 @@ html, body {
 #project-section {
     grid-row: 2 / 3;
     grid-column: 1 / 2;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: flex-start;
+    background-color: var(--EAAE-1);
+    padding: 16px;
+}
+
+#inner-project > div {
+    text-align: left;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#inner-project > div:hover {
+    background-color: rgba(242, 242, 242, 0.3);
+}
+
+#inner-project > div > p {
+    margin: 0;
+    color: var(--EAAE-5);
 }
