@@ -1,4 +1,5 @@
 import renderTodos from "../todo-renderer";
+import { currProject } from "../../..";
 
 const createTodoDom = () => {
     const cont = document.createElement('div');
@@ -42,9 +43,22 @@ const createTodoDom = () => {
     priority.appendChild(mediumPrio);
     priority.appendChild(lowPrio);
 
+    /* Add projects dropdown */
+    const selectProject = document.createElement('select');
+    selectProject.id = 'project-selector';
+
+    for (let i = 0; i < localStorage.length; i++) {
+        const project = localStorage.key(i);
+        const projectOption = document.createElement('option');
+        projectOption.value = project;
+        projectOption.innerText = project;
+
+        selectProject.appendChild(projectOption);
+    }
+
     const submit = document.createElement('button');
     submit.id = 'submit';
-    submit.type = 'submit';
+    submit.type = 'button';
     submit.innerText = 'Add Task';
 
     submit.addEventListener('click', () => {
@@ -55,17 +69,7 @@ const createTodoDom = () => {
             priority: priority.value 
         };
 
-        if (task.title !== "") {
-            if (localStorage.defaultProject) {
-                let currProject = JSON.parse(localStorage.getItem('defaultProject'));
-                currProject.push(task);
-                localStorage.setItem('defaultProject', JSON.stringify(currProject));
-            } else {
-                localStorage.setItem('defaultProject', JSON.stringify([task]));
-            }
-
-            renderTodos();
-        }
+        addTodoToStorage(task, selectProject.value);
     });
     
     const cancel = document.createElement('button');
@@ -83,6 +87,7 @@ const createTodoDom = () => {
     form.appendChild(description);
     form.appendChild(dueDate);
     form.appendChild(priority);
+    form.appendChild(selectProject);
     form.appendChild(submit);
     form.appendChild(cancel);
 
@@ -90,5 +95,19 @@ const createTodoDom = () => {
 
     return cont;
 };
+
+const addTodoToStorage = (task, project = 'defaultProject') => {
+    if (task.title !== "") {
+        if (localStorage.project) {
+            let currProject = JSON.parse(localStorage.getItem(project));
+            currProject.push(task);
+            localStorage.setItem(project, JSON.stringify(currProject));
+        } else {
+            localStorage.setItem(project, JSON.stringify([task]));
+        }
+
+        renderTodos(project);
+    }
+}
 
 export default createTodoDom;

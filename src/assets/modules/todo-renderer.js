@@ -1,10 +1,16 @@
-const renderTodos = () => {
+const renderTodos = (project = 'defaultProject') => {
     const todoSection = document.getElementById('todo-section');
 
-    const cont = document.createElement('div');
-    cont.id = 'todo-wrapper';
+    let cont = document.getElementById('todo-wrapper');
 
-    const items = JSON.parse(localStorage.getItem('defaultProject'));
+    if (!cont) {
+        cont = document.createElement('div');
+        cont.id = 'todo-wrapper';
+    } else {
+        cont.innerHTML = '';
+    }
+
+    const items = JSON.parse(localStorage.getItem(project));
 
     for (let i = 0; i < items.length; i++) {
         const item = items[i];
@@ -26,9 +32,9 @@ const renderTodos = () => {
         doneBtn.id = 'done-btn';
         doneBtn.addEventListener('click', () => {
             items.splice(i,1);
-            localStorage.setItem('defaultProject', JSON.stringify(items));
+            localStorage.setItem(project, JSON.stringify(items));
             cont.innerHTML = '';
-            renderTodos();
+            renderTodos(project);
         });
 
         div.appendChild(title);

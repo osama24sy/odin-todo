@@ -1,3 +1,6 @@
+import renderTodos from "./todo-renderer";
+import { currProject } from "../..";
+
 const createProjectSecion = () => {
     const content = document.getElementById('content');
 
@@ -29,6 +32,10 @@ const renderProjects = () => {
         projectContainer.appendChild(projectTitle);
 
         innerCont.appendChild(projectContainer);
+
+        projectContainer.addEventListener('click', () => {
+            renderTodos(projectContainer.firstChild.innerText);
+        });
     }
 
 };
