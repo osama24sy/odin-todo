@@ -12,6 +12,10 @@ const renderTodos = (project = 'defaultProject') => {
 
     const items = JSON.parse(localStorage.getItem(project));
 
+    if (!items) {
+        localStorage.setItem(project, JSON.stringify([]))
+    }
+
     for (let i = 0; i < items.length; i++) {
         const item = items[i];
         const div = document.createElement('div');

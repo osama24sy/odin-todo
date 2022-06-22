@@ -1,5 +1,4 @@
 import renderTodos from "./todo-renderer";
-import { currProject } from "../..";
 
 const createProjectSecion = () => {
     const content = document.getElementById('content');

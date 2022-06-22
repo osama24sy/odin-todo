@@ -11,8 +11,6 @@ body.appendChild(content);
 
 createHeader();
 
-export let currProject = 'defaultProject';
-
 createTodoSection();
 renderTodos();
 createProjectSecion();
